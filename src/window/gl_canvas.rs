@@ -4,6 +4,7 @@ use crate::context::Context;
 use crate::event::{Action, Key, Modifiers, MouseButton, TouchAction, WindowEvent};
 use crate::window::canvas::{CanvasSetup, NumSamples};
 use crate::window::AbstractCanvas;
+use glutin::window::CursorGrabMode;
 use glutin::{
     self,
     dpi::LogicalSize,
@@ -194,7 +195,7 @@ impl AbstractCanvas for GLCanvas {
                 }
                 _ => {}
             };
-        })
+        });
     }
 
     fn swap_buffers(&mut self) {
@@ -228,7 +229,7 @@ impl AbstractCanvas for GLCanvas {
     }
 
     fn set_cursor_grab(&self, grab: bool) {
-        let _ = self.window.window().set_cursor_grab(grab);
+        let _ = self.window.window().set_cursor_grab(if grab { CursorGrabMode::Locked } else { CursorGrabMode::None });
     }
 
     fn set_cursor_position(&self, x: f64, y: f64) {

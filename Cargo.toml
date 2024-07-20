@@ -50,7 +50,7 @@ serde        = { version = "1", optional = true }
 serde_derive = { version = "1", optional = true }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
-glutin = "0.26"
+glutin = "0.29"
 
 # We repeat all three targets instead of any(target_arch = "wasm32", target_arch = "asmjs")
 # to avoid https://github.com/koute/stdweb/issues/135
