@@ -6,6 +6,7 @@ use crate::resource::gpu_vector::{AllocationType, BufferType, GPUVec};
 use crate::resource::vertex_index::VertexIndex;
 use crate::resource::ShaderAttribute;
 use na::{self, Point2, Point3, Vector3};
+#[cfg(feature = "ncollide")]
 use ncollide3d::procedural::{IndexBuffer, TriMesh};
 use num::Zero;
 
@@ -69,6 +70,7 @@ impl Mesh {
     /// Creates a new mesh from a mesh descr.
     ///
     /// In the normals and uvs are not given, they are automatically computed.
+    #[cfg(feature = "ncollide")]
     pub fn from_trimesh(mesh: TriMesh<f32>, dynamic_draw: bool) -> Mesh {
         let mut mesh = mesh;
 
@@ -98,6 +100,7 @@ impl Mesh {
     /// Creates a triangle mesh from this mesh.
     ///
     /// Return `None` if the mesh data is not available on the CPU.
+    #[cfg(feature = "ncollide")]
     pub fn to_trimesh(&self) -> Option<TriMesh<f32>> {
         if !self.coords.read().unwrap().is_on_ram()
             || !self.faces.read().unwrap().is_on_ram()

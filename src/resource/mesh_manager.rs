@@ -3,7 +3,9 @@
 use crate::loader::mtl::MtlMaterial;
 use crate::loader::obj;
 use crate::resource::Mesh;
+#[cfg(feature = "ncollide")]
 use ncollide3d::procedural;
+#[cfg(feature = "ncollide")]
 use ncollide3d::procedural::TriMesh;
 use std::cell::RefCell;
 use std::collections::HashMap;
@@ -24,13 +26,18 @@ pub struct MeshManager {
 impl MeshManager {
     /// Creates a new mesh manager.
     pub fn new() -> MeshManager {
+        #[allow(unused_mut)]
         let mut res = MeshManager {
             meshes: HashMap::new(),
         };
 
+        #[cfg(feature = "ncollide")]
         let _ = res.add_trimesh(procedural::unit_sphere(50, 50, true), false, "sphere");
+        #[cfg(feature = "ncollide")]
         let _ = res.add_trimesh(procedural::unit_cuboid(), false, "cube");
+        #[cfg(feature = "ncollide")]
         let _ = res.add_trimesh(procedural::unit_cone(50), false, "cone");
+        #[cfg(feature = "ncollide")]
         let _ = res.add_trimesh(procedural::unit_cylinder(50), false, "cylinder");
 
         res
@@ -53,6 +60,7 @@ impl MeshManager {
     }
 
     /// Adds a mesh with the specified mesh descriptor and name.
+    #[cfg(feature = "ncollide")]
     pub fn add_trimesh(
         &mut self,
         descr: TriMesh<f32>,

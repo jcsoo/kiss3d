@@ -5,7 +5,9 @@ use crate::resource::{Material, MaterialManager, Mesh, MeshManager, Texture, Tex
 use crate::scene::Object;
 use na;
 use na::{Isometry3, Point2, Point3, Translation3, UnitQuaternion, Vector3};
+#[cfg(feature = "ncollide")]
 use ncollide3d::procedural;
+#[cfg(feature = "ncollide")]
 use ncollide3d::procedural::TriMesh;
 use std::cell::{Ref, RefCell, RefMut};
 use std::mem;
@@ -735,6 +737,7 @@ impl SceneNode {
     /// # Arguments
     /// * `h` - the capsule height
     /// * `r` - the capsule caps radius
+    #[cfg(feature = "ncollide")]
     pub fn add_capsule(&mut self, r: f32, h: f32) -> SceneNode {
         self.add_trimesh(
             procedural::capsule(&(r * 2.0), &h, 50, 50),
@@ -754,6 +757,7 @@ impl SceneNode {
     /// * `hsubdivs` - number of vertical subdivisions. This correspond to the number of squares
     /// which will be placed vertically on each line. Must not be `0`.
     /// update.
+    #[cfg(feature = "ncollide")]
     pub fn add_quad(&mut self, w: f32, h: f32, usubdivs: usize, vsubdivs: usize) -> SceneNode {
         let mut node = self.add_trimesh(
             procedural::quad(w, h, usubdivs, vsubdivs),
@@ -765,6 +769,7 @@ impl SceneNode {
     }
 
     /// Adds a double-sided quad with the specified vertices.
+    #[cfg(feature = "ncollide")]
     pub fn add_quad_with_vertices(
         &mut self,
         vertices: &[Point3<f32>],
@@ -798,6 +803,7 @@ impl SceneNode {
     }
 
     /// Creates and adds a new object using a mesh descriptor.
+    #[cfg(feature = "ncollide")]
     pub fn add_trimesh(&mut self, descr: TriMesh<f32>, scale: Vector3<f32>) -> SceneNode {
         self.add_mesh(
             Rc::new(RefCell::new(Mesh::from_trimesh(descr, false))),

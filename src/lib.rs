@@ -143,6 +143,7 @@ extern crate instant;
 pub use conrod::widget_ids;
 
 pub use nalgebra;
+#[cfg(feature = "ncollide")]
 pub use ncollide3d;
 
 #[deprecated(note = "Use the `renderer` module instead.")]
