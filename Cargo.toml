@@ -39,7 +39,7 @@ bitflags     = "1.2"
 conrod_core  = { version = "0.71", features = ["wasm-bindgen"], optional = true }
 either       = "1"
 glow         = "0.12"
-image        = "0.24"
+image        = { version = "0.25", default-features = false }
 instant      = { version = "0.1", features = ["wasm-bindgen"] }
 libc         = "0.2"
 nalgebra     = "0.33"
