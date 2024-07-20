@@ -46,8 +46,8 @@ nalgebra     = "0.33"
 ncollide3d   = { version = "0.33", optional = true }
 num-traits   = "0.2"
 rusttype     = { version = "0.8.3", features = ["gpu_cache"] }
-serde        = "1"
-serde_derive = "1"
+serde        = { version = "1", optional = true }
+serde_derive = { version = "1", optional = true }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 glutin = "0.26"

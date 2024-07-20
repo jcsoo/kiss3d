@@ -130,9 +130,9 @@ extern crate bitflags;
 extern crate nalgebra as na;
 extern crate num_traits as num;
 extern crate rusttype;
-#[macro_use]
-extern crate serde_derive;
-extern crate serde;
+// #[macro_use]
+// extern crate serde_derive;
+// extern crate serde;
 
 #[cfg(feature = "conrod")]
 pub extern crate conrod_core as conrod;

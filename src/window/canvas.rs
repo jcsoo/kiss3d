@@ -8,7 +8,9 @@ use crate::window::WebGLCanvas as CanvasImpl;
 use image::{GenericImage, Pixel};
 
 /// The possible number of samples for multisample anti-aliasing.
-#[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq, Eq)]
+// #[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq, Eq)]
+
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
 pub enum NumSamples {
     /// Multisampling disabled.
     Zero = 0,
@@ -40,7 +42,8 @@ impl NumSamples {
     }
 }
 
-#[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq, Eq)]
+// #[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
 /// Canvas options.
 pub struct CanvasSetup {
     /// Is vsync enabled?

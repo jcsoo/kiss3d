@@ -1,6 +1,7 @@
 #![allow(missing_docs)]
 
-#[derive(Copy, Clone, PartialEq, PartialOrd, Debug, Serialize, Deserialize)]
+// #[derive(Copy, Clone, PartialEq, PartialOrd, Debug, Serialize, Deserialize)]
+#[derive(Copy, Clone, PartialEq, PartialOrd, Debug)]
 pub enum WindowEvent {
     Pos(i32, i32),
     Size(u32, u32),
@@ -41,7 +42,8 @@ impl WindowEvent {
 }
 
 // NOTE: list of keys inspired from glutin.
-#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Serialize, Deserialize)]
+// #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Serialize, Deserialize)]
+#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub enum Key {
     Key1,
     Key2,
@@ -206,7 +208,9 @@ pub enum Key {
     Cut,
     Unknown,
 }
-#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Serialize, Deserialize)]
+
+// #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Serialize, Deserialize)]
+#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub enum MouseButton {
     Button1,
     Button2,
@@ -218,13 +222,15 @@ pub enum MouseButton {
     Button8,
 }
 
-#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Serialize, Deserialize)]
+// #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Serialize, Deserialize)]
+#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub enum Action {
     Release,
     Press,
 }
 
-#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Serialize, Deserialize)]
+// #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Serialize, Deserialize)]
+#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub enum TouchAction {
     Start,
     End,
@@ -234,7 +240,7 @@ pub enum TouchAction {
 
 bitflags! {
     #[doc = "Key modifiers"]
-    #[derive(Serialize, Deserialize)]
+    // #[derive(Serialize, Deserialize)]
     pub struct Modifiers: i32 {
         const Shift       = 0b0001;
         const Control     = 0b0010;
